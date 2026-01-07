@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kitchen Orders</title>
+
+    <!-- Simple styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: #fff;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff4444;
+        }
+
+        .order {
+            background: #222;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .order:hover {
+            background: #333;
+        }
+
+        .hint {
+            font-size: 12px;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>🔔 New Orders</h1>
+<p class="hint">Tap an order to accept and stop the sound</p>
+
+<div id="orders"></div>
+
+<!-- Beep sound -->
+<audio id="beep" loop>
+    <source src="beep.mp3" type="audio/mpeg">
+</audio>
+
+<!-- WebSocket libraries -->
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
+
+<script>
+    const ordersDiv = document.getElementById("orders");
+    const beep = document.getElementById("beep");
+
+    // Connect to Spring Boot WebSocket
+    const socket = new SockJS('/ws');
+    const stompClient = Stomp.over(socket);
+
+    stompClient.connect({}, function () {
+
+        stompClient.subscribe('/topic/orders', function (message) {
+
+            const order = JSON.parse(message.body);
+
+            // Play beep sound
+            beep.play();
+
+            // Create order card
+            const div = document.createElement("div");
+            div.className = "order";
+            div.innerHTML = `
+                <strong>Order #${order.id}</strong><br>
+                ${order.items}
+            `;
+
+            // When kitchen accepts order
+            div.onclick = function () {
+                fetch('/api/orders/' + order.id + '/accept', {
+                    method: 'PUT'
+                });
+
+                beep.pause();
+                beep.currentTime = 0;
+                div.remove();
+            };
+
+            ordersDiv.appendChild(div);
+        });
+    });
+</script>
+
+</body>
+</html>
