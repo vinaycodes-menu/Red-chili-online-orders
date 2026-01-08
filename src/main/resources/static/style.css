@@ -87,7 +87,8 @@ body {
 /* ===== CONTENT AREA ===== */
 
 .content {
-  flex: 1;               /* take remaining space */
+   max-width: 1200px;
+    margin: auto;               /* take remaining space */
 }
 
 /* a row that holds 2 cards */
@@ -189,12 +190,9 @@ html{
 }
 
 .qty-control button {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
+   width: 32px;
+    height: 32px;
+    font-size: 18px;
 }
 
 .qty {
