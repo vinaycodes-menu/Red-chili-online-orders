@@ -157,87 +157,91 @@
 <script>
     document.addEventListener("DOMContentLoaded", () => {
 
-        const cart = {};
-        const cartCountEl = document.querySelector(".cart-count");
-        const cartTotalEl = document.querySelector(".cart-total");
-        const placeOrderBtn = document.querySelector(".place-order-btn");
+      const cart = {};
 
-        function updateCartUI() {
-            let count = 0;
-            let total = 0;
+      const cartCountEl = document.querySelector(".cart-count");
+      const cartTotalEl = document.querySelector(".cart-total");
+      const placeOrderBtn = document.querySelector(".place-order-btn");
 
-            Object.values(cart).forEach(item => {
-                count += item.qty;
-                total += item.qty * item.price;
-            });
+      function updateCartUI() {
+        let totalItems = 0;
+        let totalAmount = 0;
 
-            cartCountEl.textContent = count;
-            cartTotalEl.textContent = total.toFixed(2);
+        Object.values(cart).forEach(item => {
+          totalItems += item.qty;
+          totalAmount += item.qty * item.price;
+        });
+
+        cartCountEl.textContent = totalItems;
+        cartTotalEl.textContent = totalAmount.toFixed(2);
+      }
+
+      document.querySelectorAll(".plus-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const card = btn.closest(".dish-card");
+          const name = card.querySelector(".dish-title").textContent.trim();
+          const price = parseFloat(card.querySelector(".price").textContent.replace("$", ""));
+          const qtyEl = card.querySelector(".qty");
+
+          if (!cart[name]) {
+            cart[name] = { price, qty: 0 };
+          }
+
+          cart[name].qty++;
+          qtyEl.textContent = cart[name].qty;
+          updateCartUI();
+        });
+      });
+
+      document.querySelectorAll(".minus-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const card = btn.closest(".dish-card");
+          const name = card.querySelector(".dish-title").textContent.trim();
+          const qtyEl = card.querySelector(".qty");
+
+          if (!cart[name]) return;
+
+          cart[name].qty--;
+
+          if (cart[name].qty <= 0) {
+            delete cart[name];
+            qtyEl.textContent = 0;
+          } else {
+            qtyEl.textContent = cart[name].qty;
+          }
+
+          updateCartUI();
+        });
+      });
+
+      placeOrderBtn.addEventListener("click", () => {
+        if (Object.keys(cart).length === 0) {
+          alert("Please add at least one item.");
+          return;
         }
 
-        document.querySelectorAll(".plus-btn").forEach(btn => {
-            btn.addEventListener("click", () => {
-                const card = btn.closest(".dish-card");
-                const name = card.querySelector(".dish-title").textContent;
-                const price = parseFloat(card.querySelector(".price").textContent.replace("$", ""));
-                const qtyEl = card.querySelector(".qty");
+        const items = Object.entries(cart)
+          .map(([name, d]) => `${name} x${d.qty}`)
+          .join(", ");
 
-                if (!cart[name]) cart[name] = { price, qty: 0 };
-                cart[name].qty++;
-                qtyEl.textContent = cart[name].qty;
-
-                updateCartUI();
-            });
-        });
-
-        document.querySelectorAll(".minus-btn").forEach(btn => {
-            btn.addEventListener("click", () => {
-                const card = btn.closest(".dish-card");
-                const name = card.querySelector(".dish-title").textContent;
-                const qtyEl = card.querySelector(".qty");
-
-                if (!cart[name]) return;
-                cart[name].qty--;
-
-                if (cart[name].qty <= 0) {
-                    delete cart[name];
-                    qtyEl.textContent = 0;
-                } else {
-                    qtyEl.textContent = cart[name].qty;
-                }
-
-                updateCartUI();
-            });
-        });
-
-        placeOrderBtn.addEventListener("click", () => {
-            if (Object.keys(cart).length === 0) {
-                alert("Please add items first");
-                return;
-            }
-
-            const items = Object.entries(cart)
-                .map(([name, data]) => `${name} x${data.qty}`)
-                .join(", ");
-
-            fetch("/api/orders", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ items })
-            })
-            .then(res => {
-                if (!res.ok) throw new Error();
-                alert("✅ Order placed successfully");
-
-                Object.keys(cart).forEach(k => delete cart[k]);
-                document.querySelectorAll(".qty").forEach(q => q.textContent = 0);
-                updateCartUI();
-            })
-            .catch(() => alert("❌ Failed to place order"));
-        });
+        fetch("/api/orders", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ items })
+        })
+        .then(res => {
+          if (!res.ok) throw new Error();
+          alert("✅ Order placed successfully!");
+          Object.keys(cart).forEach(k => delete cart[k]);
+          document.querySelectorAll(".qty").forEach(q => q.textContent = 0);
+          updateCartUI();
+        })
+        .catch(() => alert("❌ Failed to place order"));
+      });
 
     });
 </script>
+
 
 </body>
 </html>
