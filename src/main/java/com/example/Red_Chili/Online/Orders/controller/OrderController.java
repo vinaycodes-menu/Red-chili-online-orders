@@ -5,6 +5,7 @@ import com.example.Red_Chili.Online.Orders.repository.OrderRepository;
 import org.springframework.web.bind.annotation.*;
 import com.example.Red_Chili.Online.Orders.service.OrderNotifier;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/orders")
@@ -19,14 +20,18 @@ public class OrderController {
     }
 
     @PostMapping
-    public OrderEntity createOrder(@RequestBody String items) {
+    public OrderEntity createOrder(@RequestBody Map<String, String> payload) {
+
         OrderEntity order = new OrderEntity();
-        order.setItems(items);
+        order.setItems(payload.get("items"));
+        order.setStatus("NEW");
 
         OrderEntity saved = orderRepository.save(order);
-        notifier.notifyKitchen(saved); // 🔔 beep trigger
+        notifier.notifyKitchen(saved);
+
         return saved;
     }
+
 
     @GetMapping("/new")
     public List<OrderEntity> newOrders() {
