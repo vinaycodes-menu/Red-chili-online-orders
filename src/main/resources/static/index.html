@@ -4,12 +4,13 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>RED CHILI RESTAURANT MENU</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="/css/style.css"/>
-
-
 </head>
 
 <body>
+
 <header class="top-bar">
     <div class="restaurant-info">
         <h1>Red Chili Indian Restaurant</h1>
@@ -24,750 +25,219 @@
 </header>
 
 <div class="main-layout">
+
+    <!-- SIDEBAR -->
     <aside class="sidebar">
         <h2 class="sidebar-title">Full Menu</h2>
         <p class="sidebar-time">10:00 am - 8:00 pm</p>
 
         <nav class="menu-list">
             <a href="#biryani-section" class="menu-item active">Biryani</a>
-
-            <a href="#curry-items" class="menu-item">Curry's</a>
-            <a href="#week-end" class="menu-item">Red Chili's Specials</a>
-
-
-            <a href="#combo-section" class="menu-item">Combo Items</a>
-            <a href="#" class="menu-item">Snacks</a>
-
+            <a href="#curry-items" class="menu-item">Curries</a>
+            <a href="#combo-section" class="menu-item">Combos</a>
         </nav>
     </aside>
 
+    <!-- CONTENT -->
     <main class="content">
+
+        <!-- BIRYANI -->
         <section id="biryani-section">
-            <section class="card-row">
+            <div class="card-row">
+
                 <article class="dish-card">
                     <div class="dish-text">
                         <h3 class="dish-title">Chicken Dum Biryani</h3>
-                        <p class="dish-desc">
-                            🔥 Whole chicken buried deep in basmati rice and blasted with
-                            Kerala spices — one bite and you’ll forget your diet, your
-                            stress, and maybe your name. 😄
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 7.99</span>
-                            <span class="rating">88% (1452)</span>
-                        </p>
+                        <p class="dish-desc">Whole chicken dum cooked in aromatic basmati rice.</p>
+                        <p class="dish-meta"><span class="price">$7.99</span></p>
                     </div>
                     <div class="dish-image-wrapper">
-                        <img src="photos/cb.jpg" alt="Chicken Dum Biryani"/>
+                        <img src="/photos/cb.jpg" alt="Chicken Dum Biryani">
                     </div>
                     <div class="qty-control">
                         <button class="minus-btn">−</button>
                         <span class="qty">0</span>
                         <button class="plus-btn">+</button>
                     </div>
-
                 </article>
 
                 <article class="dish-card">
                     <div class="dish-text">
                         <h3 class="dish-title">Mutton Dum Biryani</h3>
-                        <p class="dish-desc">
-                            🔥 Tender mutton sealed with aromatic basmati rice and
-                            dum-cooked till every grain screams flavour.
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 12.99</span>
-                            <span class="rating">80% (412)</span>
-                        </p>
+                        <p class="dish-desc">Slow cooked mutton layered with basmati rice.</p>
+                        <p class="dish-meta"><span class="price">$12.99</span></p>
                     </div>
                     <div class="dish-image-wrapper">
-                        <img src="photos/mb.jpg" alt="Mutton Dum Biryani"/>
+                        <img src="/photos/mb.jpg" alt="Mutton Dum Biryani">
                     </div>
                     <div class="qty-control">
                         <button class="minus-btn">−</button>
                         <span class="qty">0</span>
                         <button class="plus-btn">+</button>
                     </div>
-
-                </article>
-            </section>
-
-            <section class="card-row">
-                <article class="dish-card">
-                    <div class="dish-text">
-                        <h3 class="dish-title">Beef Biryani</h3>
-                        <p class="dish-desc">
-                            🍖 Juicy beef packed into basmati rice and dum-cooked till
-                            every bite hits with pure Kerala biryani power.
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 12.99</span>
-                            <span class="rating">71% (114)</span>
-                        </p>
-                    </div>
-                    <div class="dish-image-wrapper">
-                        <img src="photos/beef.jpg" alt="Beef Biryani"/>
-                    </div>
-                    <div class="qty-control">
-                        <button class="minus-btn">−</button>
-                        <span class="qty">0</span>
-                        <button class="plus-btn">+</button>
-                    </div>
-
                 </article>
 
-                <article class="dish-card">
-                    <div class="dish-text">
-                        <h3 class="dish-title">Fish Biryani</h3>
-                        <p class="dish-desc">
-                            🐟 One bite of this king fish biryani and the ocean will
-                            officially lose its favourite fish — to your plate.
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 12.99</span>
-                            <span class="rating">70% (91)</span>
-                        </p>
-                    </div>
-                    <div class="dish-image-wrapper">
-                        <img src="photos/fish.jpg" alt="Fish Biryani"/>
-                    </div>
-                    <div class="qty-control">
-                        <button class="minus-btn">−</button>
-                        <span class="qty">0</span>
-                        <button class="plus-btn">+</button>
-                    </div>
-
-                </article>
-            </section>
-
-            <section class="card-row">
-                <article class="dish-card">
-                    <div class="dish-text">
-                        <h3 class="dish-title">Kappa Biryani</h3>
-                        <p class="dish-desc">
-                            Soft kappa loaded with spicy meat masala — the biryani that
-                            doesn’t need rice to prove its power.
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 7.99</span>
-                            <span class="rating">81% (442)</span>
-                        </p>
-                    </div>
-                    <div class="dish-image-wrapper">
-                        <img src="photos/kappa.jpg" alt="Kappa Biryani"/>
-                    </div>
-                    <div class="qty-control">
-                        <button class="minus-btn">−</button>
-                        <span class="qty">0</span>
-                        <button class="plus-btn">+</button>
-                    </div>
-
-                </article>
-            </section>
+            </div>
         </section>
 
+        <!-- CURRIES -->
         <section id="curry-items">
-            <section class="card-row">
+            <div class="card-row">
+
                 <article class="dish-card">
                     <div class="dish-text">
                         <h3 class="dish-title">Butter Chicken</h3>
-                        <p class="dish-desc">
-                            Creamy tomato-based gravy cooked with tender Chicken
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 9.99</span>
-                        </p>
+                        <p class="dish-desc">Creamy tomato gravy with tender chicken.</p>
+                        <p class="dish-meta"><span class="price">$9.99</span></p>
                     </div>
                     <div class="dish-image-wrapper">
-                        <img src="photos/butterchicken.jpg" alt="Butter Chicken"/>
+                        <img src="/photos/butterchicken.jpg" alt="Butter Chicken">
                     </div>
                     <div class="qty-control">
                         <button class="minus-btn">−</button>
                         <span class="qty">0</span>
                         <button class="plus-btn">+</button>
                     </div>
-
                 </article>
 
-                <article class="dish-card">
-                    <div class="dish-text">
-                        <h3 class="dish-title">Chicken Tikka Masala</h3>
-                        <p class="dish-desc">
-                            Creamy tomato-based gravy cooked with tender Chicken
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 9.99</span>
-                        </p>
-                    </div>
-                    <div class="dish-image-wrapper">
-                        <img src="photos/ctm.jpg" alt="Chicken Tikka Masala"/>
-                    </div>
-                    <div class="qty-control">
-                        <button class="minus-btn">−</button>
-                        <span class="qty">0</span>
-                        <button class="plus-btn">+</button>
-                    </div>
-
-                </article>
-            </section>
-
-            <section class="card-row">
                 <article class="dish-card">
                     <div class="dish-text">
                         <h3 class="dish-title">Chicken Curry</h3>
-                        <p class="dish-desc">
-                            🍛 Tender chicken simmered in rich Kerala masala with deep
-                            flavours that hit instantly.
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 7.99</span>
-                        </p>
+                        <p class="dish-desc">Traditional Kerala style chicken curry.</p>
+                        <p class="dish-meta"><span class="price">$7.99</span></p>
                     </div>
                     <div class="dish-image-wrapper">
-                        <img src="photos/chicken curry.jpg" alt="Chicken Curry"/>
+                        <img src="/photos/chickencurry.jpg" alt="Chicken Curry">
                     </div>
                     <div class="qty-control">
                         <button class="minus-btn">−</button>
                         <span class="qty">0</span>
                         <button class="plus-btn">+</button>
                     </div>
-
                 </article>
 
-                <article class="dish-card">
-                    <div class="dish-text">
-                        <h3 class="dish-title">Beef Curry</h3>
-                        <p class="dish-desc">
-                            🍛 Tender beef drenched in spicy Kerala gravy that hits
-                            straight to the soul.
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 11.99</span>
-                        </p>
-                    </div>
-                    <div class="dish-image-wrapper">
-                        <img src="photos/beef-curry.jpg" alt="Beef Curry"/>
-                    </div>
-                    <div class="qty-control">
-                        <button class="minus-btn">−</button>
-                        <span class="qty">0</span>
-                        <button class="plus-btn">+</button>
-                    </div>
-
-                </article>
-            </section>
-
-            <section class="card-row">
-                <article class="dish-card">
-                    <div class="dish-text">
-                        <h3 class="dish-title">Beef Fry</h3>
-                        <p class="dish-desc">
-                            🥩 Crispy, spicy beef roasted to perfection — pure Kerala
-                            flavour with zero mercy.
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 11.99</span>
-                        </p>
-                    </div>
-                    <div class="dish-image-wrapper">
-                        <img src="photos/beef fry.webp" alt="Beef Fry"/>
-                    </div>
-                    <div class="qty-control">
-                        <button class="minus-btn">−</button>
-                        <span class="qty">0</span>
-                        <button class="plus-btn">+</button>
-                    </div>
-
-                </article>
-
-                <article class="dish-card">
-                    <div class="dish-text">
-                        <h3 class="dish-title">Goat Curry</h3>
-                        <p class="dish-desc">
-                            🍛 One bite of this goat curry and rice won’t be enough —
-                            chapathi, porotta, everything will enter the chat.
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 11.99</span>
-                        </p>
-                    </div>
-                    <div class="dish-image-wrapper">
-                        <img src="photos/goat curry.jpg" alt="Goat Curry"/>
-                    </div>
-                    <div class="qty-control">
-                        <button class="minus-btn">−</button>
-                        <span class="qty">0</span>
-                        <button class="plus-btn">+</button>
-                    </div>
-
-                </article>
-            </section>
-
-            <section class="card-row">
-                <article class="dish-card">
-                    <div class="dish-text">
-                        <h3 class="dish-title">Chicken Fry</h3>
-                        <p class="dish-desc">
-                            Crispy and juicy chicken pieces marinated with aromatic spices
-                            and deep-fried to perfection. Served hot with onions and
-                            lemon.
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 7.99</span>
-                        </p>
-                    </div>
-                    <div class="dish-image-wrapper">
-                        <img src="photos/Cfry.jpg" alt="Chicken Fry"/>
-                    </div>
-                    <div class="qty-control">
-                        <button class="minus-btn">−</button>
-                        <span class="qty">0</span>
-                        <button class="plus-btn">+</button>
-                    </div>
-
-                </article>
-
-                <article class="dish-card">
-                    <div class="dish-text">
-                        <h3 class="dish-title">Fish Curry</h3>
-                        <p class="dish-desc">
-                            Aromatic Kerala-style king fish curry featuring roasted
-                            coconut paste, curry leaves, mustard seeds, and tamarind.
-                            Slow-cooked to perfection for a deep, authentic coastal
-                            flavor.
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 11.99</span>
-                        </p>
-                    </div>
-                    <div class="dish-image-wrapper">
-                        <img src="photos/fishCurry.jpg" alt="Fish Curry"/>
-                    </div>
-                    <div class="qty-control">
-                        <button class="minus-btn">−</button>
-                        <span class="qty">0</span>
-                        <button class="plus-btn">+</button>
-                    </div>
-
-                </article>
-            </section>
-
-            <section class="card-row">
-                <article class="dish-card">
-                    <div class="dish-text">
-                        <h3 class="dish-title">Avial</h3>
-                        <p class="dish-desc">
-                            Mixed vegetables cooked in a thick coconut-yogurt gravy,
-                            infused with green chillies and aromatic spices for a bold yet
-                            comforting Kerala-style taste.
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 7.99</span>
-                        </p>
-                    </div>
-                    <div class="dish-image-wrapper">
-                        <img src="photos/Ayiyal.jpg" alt="Avial"/>
-                    </div>
-                    <div class="qty-control">
-                        <button class="minus-btn">−</button>
-                        <span class="qty">0</span>
-                        <button class="plus-btn">+</button>
-                    </div>
-
-                </article>
-
-                <article class="dish-card">
-                    <div class="dish-text">
-                        <h3 class="dish-title">Thoran</h3>
-                        <p class="dish-desc">
-                            Thoran is a traditional South Indian dry curry made by gently
-                            sautéing fresh vegetables with grated coconut, mild spices,
-                            and curry leaves. It is light, nutritious, and full of natural
-                            flavor — the perfect side dish for rice meals.
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 7.99</span>
-                        </p>
-                    </div>
-                    <div class="dish-image-wrapper">
-                        <img src="photos/thoran.JPG" alt="Thoran"/>
-                    </div>
-                    <div class="qty-control">
-                        <button class="minus-btn">−</button>
-                        <span class="qty">0</span>
-                        <button class="plus-btn">+</button>
-                    </div>
-
-                </article>
-            </section>
-        </section>
+            </div>
         </section>
 
-        <section id="week-end">
-            <section class="card-row">
-                <article class="dish-card">
-                    <div class="dish-text">
-                        <h3 class="dish-title">Pothi Choru</h3>
-                        <p class="dish-desc">
-                            Pothi Choru is a traditional Kerala lunch packed in banana
-                            leaf, bringing the authentic taste and aroma of a true
-                            homemade meal. Steamed rice, curries, thoran, achar,
-                            chammanthi, and sides are lovingly wrapped in a fresh banana
-                            leaf.
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 10</span>
-                            <span class="spcl-item">Available only on Saturdays & Sundays</span>
-                        </p>
-                    </div>
-                    <div class="dish-image-wrapper">
-                        <img src="photos/podhichoru.jpg" alt="Pothi Choru"/>
-
-                    </div>
-                    <div class="qty-control">
-                        <button class="minus-btn">−</button>
-                        <span class="qty">0</span>
-                        <button class="plus-btn">+</button>
-                    </div>
-
-
-                </article>
-
-                <article class="dish-card">
-                    <div class="dish-text">
-                        <h3 class="dish-title">Chatti Choru</h3>
-                        <p class="dish-desc">
-                            Chatti Choru brings back the flavor of old Kerala kitchens.
-                            Packed in a traditional clay pot, the rice and curries absorb
-                            the earthy fragrance of the pot, creating an unforgettable
-                            taste that no modern dish can match. It’s more than a meal —
-                            it’s heritage in every bite.
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 10</span>
-                            <span class="spcl-item">Available only on Saturdays & Sundays</span>
-                        </p>
-                    </div>
-                    <div class="dish-image-wrapper">
-                        <img src="photos/chatti choru.jpeg" alt="Chatti Choru"/>
-                    </div>
-                    <div class="qty-control">
-                        <button class="minus-btn">−</button>
-                        <span class="qty">0</span>
-                        <button class="plus-btn">+</button>
-                    </div>
-
-                </article>
-            </section>
-
-            <section class="card-row">
-                <article class="dish-card">
-                    <div class="dish-text">
-                        <h3 class="dish-title">Kizhi Porotta</h3>
-                        <p class="dish-desc">
-                            Soft layered parotta wrapped in banana leaf with tender spicy
-                            beef gravy. Juicy, flavorful, and packed with rich South
-                            Indian taste.
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 7.99</span>
-                        </p>
-                    </div>
-                    <div class="dish-image-wrapper">
-                        <img src="photos/kizhi porotta.jpeg" alt="Kizhi Porotta"/>
-                    </div>
-                    <div class="qty-control">
-                        <button class="minus-btn">−</button>
-                        <span class="qty">0</span>
-                        <button class="plus-btn">+</button>
-                    </div>
-
-                </article>
-
-                <article class="dish-card">
-                    <div class="dish-text">
-                        <h3 class="dish-title">Kothu Porotta</h3>
-                        <p class="dish-desc">
-                            Shredded parotta tossed with spicy gravy, egg, and tender meat
-                            on a hot grill. Flavorful, aromatic, and full of street-style
-                            taste.
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 7.99</span>
-                        </p>
-                    </div>
-                    <div class="dish-image-wrapper">
-                        <img src="photos/Kothuparotta.jpg" alt="Kothu Porotta"/>
-                    </div>
-                    <div class="qty-control">
-                        <button class="minus-btn">−</button>
-                        <span class="qty">0</span>
-                        <button class="plus-btn">+</button>
-                    </div>
-
-                </article>
-            </section>
-
-            <section class="card-row">
-                <article class="dish-card">
-                    <div class="dish-text">
-                        <h3 class="dish-title">Kappa Kothu</h3>
-                        <p class="dish-desc">
-                            Chopped tapioca stir-fried with spicy gravy, onions, curry
-                            leaves, and your choice of meat. Soft, flavorful, and full of
-                            authentic Kerala street-style taste.
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 7.99</span>
-                        </p>
-                    </div>
-                    <div class="dish-image-wrapper">
-                        <img src="photos/kappa kothu.jpeg" alt="Kappa Kothu"/>
-                    </div>
-                    <div class="qty-control">
-                        <button class="minus-btn">−</button>
-                        <span class="qty">0</span>
-                        <button class="plus-btn">+</button>
-                    </div>
-
-                </article>
-            </section>
-        </section>
-        </section>
-
+        <!-- COMBOS -->
         <section id="combo-section">
-            <section class="card-row">
+            <div class="card-row">
+
                 <article class="dish-card">
                     <div class="dish-text">
-                        <h3 class="dish-title">Chicken Tikka Combo Meal</h3>
-                        <p class="dish-desc">
-                            Flavorful marinated chicken cooked to perfection, served with basmati rice and warm butter
-                            naan — a complete and delicious meal.
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 11.99</span>
-                        </p>
+                        <h3 class="dish-title">Chicken Tikka Combo</h3>
+                        <p class="dish-desc">Chicken tikka with rice and naan.</p>
+                        <p class="dish-meta"><span class="price">$11.99</span></p>
                     </div>
                     <div class="dish-image-wrapper">
-                        <img src="photos/ctmMeal.jpg" alt="Chicken Tikka Combo Meal"/>
+                        <img src="/photos/ctmMeal.jpg" alt="Chicken Tikka Combo">
                     </div>
                     <div class="qty-control">
                         <button class="minus-btn">−</button>
                         <span class="qty">0</span>
                         <button class="plus-btn">+</button>
                     </div>
-
                 </article>
 
-
-                <article class="dish-card">
-                    <div class="dish-text">
-                        <h3 class="dish-title">Butter Chicken Combo Meal</h3>
-                        <p class="dish-desc">
-                            Creamy butter chicken served with basmati rice and warm naan for a rich and satisfying meal.
-                        </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 11.99</span>
-                        </p>
-                    </div>
-                    <div class="dish-image-wrapper">
-                        <img src="photos/ButterChickenmeal.jpg" alt="Butter Chicken Combo Meal"/>
-                    </div>
-                    <div class="qty-control">
-                        <button class="minus-btn">−</button>
-                        <span class="qty">0</span>
-                        <button class="plus-btn">+</button>
-                    </div>
-
-                </article>
-            </section>
-
-
-            <section class="card-row">
-                <article class="dish-card">
-                    <div class="dish-text">
-                        <h3 class="dish-title">Beef Curry Meal</h3>
-                        <p class="dish-desc">
-                            Tender beef in spicy aromatic curry served with flaky parotas for a filling and flavorful
-                            meal. </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 12.99</span>
-                        </p>
-                    </div>
-                    <div class="dish-image-wrapper">
-                        <img src="photos/beefcurrycombo.jpg" alt="Beef Curry Meal"/>
-                    </div>
-                    <div class="qty-control">
-                        <button class="minus-btn">−</button>
-                        <span class="qty">0</span>
-                        <button class="plus-btn">+</button>
-                    </div>
-
-                </article>
-
-
-                <article class="dish-card">
-                    <div class="dish-text">
-                        <h3 class="dish-title">Chicken Curry Meal</h3>
-                        <p class="dish-desc">
-                            Flavorful chicken curry served with soft chapathis for a wholesome, homestyle meal. </p>
-                        <p class="dish-meta">
-                            <span class="price">$ 11.99</span>
-                        </p>
-                    </div>
-                    <div class="dish-image-wrapper">
-                        <img src="photos/chickencurryMeal.jpg" alt="Chicken Curry Meal"/>
-                    </div>
-                    <div class="qty-control">
-                        <button class="minus-btn">−</button>
-                        <span class="qty">0</span>
-                        <button class="plus-btn">+</button>
-                    </div>
-
-                </article>
-            </section>
+            </div>
         </section>
 
-        </section>
-        </section>
-        </section>
     </main>
 </div>
 
+<!-- CART BAR -->
+<div class="order-bar">
+    <div class="order-info">
+        Items: <span class="cart-count">0</span> | Total: $<span class="cart-total">0.00</span>
+    </div>
+    <button class="order-link place-order-btn">🍽️ Place Order</button>
+</div>
+
+<!-- JAVASCRIPT -->
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", () => {
 
-      /* ===============================
-         CART STATE
-      =============================== */
-      const cart = {}; // { "Item Name": { price: number, qty: number } }
+        const cart = {};
+        const cartCountEl = document.querySelector(".cart-count");
+        const cartTotalEl = document.querySelector(".cart-total");
+        const placeOrderBtn = document.querySelector(".place-order-btn");
 
-      const cartCountEl = document.querySelector(".cart-count");
-      const cartTotalEl = document.querySelector(".cart-total");
-      const placeOrderBtn = document.querySelector(".place-order-btn");
+        function updateCartUI() {
+            let count = 0;
+            let total = 0;
 
-      /* ===============================
-         UPDATE CART UI
-      =============================== */
-      function updateCartUI() {
-        let totalItems = 0;
-        let totalAmount = 0;
+            Object.values(cart).forEach(item => {
+                count += item.qty;
+                total += item.qty * item.price;
+            });
 
-        Object.values(cart).forEach(item => {
-          totalItems += item.qty;
-          totalAmount += item.qty * item.price;
-        });
-
-        cartCountEl.textContent = totalItems;
-        cartTotalEl.textContent = totalAmount.toFixed(2);
-      }
-
-      /* ===============================
-         + / - BUTTON HANDLERS
-      =============================== */
-      document.querySelectorAll(".plus-btn").forEach(btn => {
-        btn.addEventListener("click", function () {
-          const card = this.closest(".dish-card");
-          const name = card.querySelector(".dish-title").textContent.trim();
-          const price = parseFloat(card.querySelector(".price").textContent.replace("$", ""));
-          const qtyEl = card.querySelector(".qty");
-
-          if (!cart[name]) {
-            cart[name] = { price, qty: 0 };
-          }
-
-          cart[name].qty++;
-          qtyEl.textContent = cart[name].qty;
-          updateCartUI();
-        });
-      });
-
-      document.querySelectorAll(".minus-btn").forEach(btn => {
-        btn.addEventListener("click", function () {
-          const card = this.closest(".dish-card");
-          const name = card.querySelector(".dish-title").textContent.trim();
-          const qtyEl = card.querySelector(".qty");
-
-          if (!cart[name]) return;
-
-          cart[name].qty--;
-
-          if (cart[name].qty <= 0) {
-            delete cart[name];
-            qtyEl.textContent = 0;
-          } else {
-            qtyEl.textContent = cart[name].qty;
-          }
-
-          updateCartUI();
-        });
-      });
-
-      /* ===============================
-         PLACE ORDER (BACKEND ONLY)
-      =============================== */
-      placeOrderBtn.addEventListener("click", function () {
-
-        if (Object.keys(cart).length === 0) {
-          alert("Please add at least one item before placing the order.");
-          return;
+            cartCountEl.textContent = count;
+            cartTotalEl.textContent = total.toFixed(2);
         }
 
-        const items = [];
-        Object.entries(cart).forEach(([name, data]) => {
-          items.push(`${name} x${data.qty}`);
+        document.querySelectorAll(".plus-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const card = btn.closest(".dish-card");
+                const name = card.querySelector(".dish-title").textContent;
+                const price = parseFloat(card.querySelector(".price").textContent.replace("$", ""));
+                const qtyEl = card.querySelector(".qty");
+
+                if (!cart[name]) cart[name] = { price, qty: 0 };
+                cart[name].qty++;
+                qtyEl.textContent = cart[name].qty;
+
+                updateCartUI();
+            });
         });
 
-        fetch("/api/orders", {
-          method: "POST",
-         headers: {
-         "Content-Type": "application/json"
-         },
-         body: JSON.stringify({
-          items: items.join(",")
-          })
-          body: items.join(",")
-        })
-        .then(res => {
-          if (!res.ok) throw new Error("Order failed");
-          alert("✅ Order placed successfully!");
+        document.querySelectorAll(".minus-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const card = btn.closest(".dish-card");
+                const name = card.querySelector(".dish-title").textContent;
+                const qtyEl = card.querySelector(".qty");
 
-          // reset cart
-          Object.keys(cart).forEach(k => delete cart[k]);
-          document.querySelectorAll(".qty").forEach(q => q.textContent = 0);
-          updateCartUI();
-        })
-        .catch(err => {
-          console.error(err);
-          alert("❌ Failed to place order. Please try again.");
+                if (!cart[name]) return;
+                cart[name].qty--;
+
+                if (cart[name].qty <= 0) {
+                    delete cart[name];
+                    qtyEl.textContent = 0;
+                } else {
+                    qtyEl.textContent = cart[name].qty;
+                }
+
+                updateCartUI();
+            });
         });
-      });
+
+        placeOrderBtn.addEventListener("click", () => {
+            if (Object.keys(cart).length === 0) {
+                alert("Please add items first");
+                return;
+            }
+
+            const items = Object.entries(cart)
+                .map(([name, data]) => `${name} x${data.qty}`)
+                .join(", ");
+
+            fetch("/api/orders", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ items })
+            })
+            .then(res => {
+                if (!res.ok) throw new Error();
+                alert("✅ Order placed successfully");
+
+                Object.keys(cart).forEach(k => delete cart[k]);
+                document.querySelectorAll(".qty").forEach(q => q.textContent = 0);
+                updateCartUI();
+            })
+            .catch(() => alert("❌ Failed to place order"));
+        });
 
     });
 </script>
 
-
-<!-- ORDER / CART BAR -->
-<div class="order-bar">
-    <div class="order-info">
-        Items: <span class="cart-count">0</span> &nbsp; | &nbsp;
-        Total: $<span class="cart-total">0.00</span>
-    </div>
-
-    <button class="order-link place-order-btn">
-        🍽️ Place Order
-    </button>
-
-</div>
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
