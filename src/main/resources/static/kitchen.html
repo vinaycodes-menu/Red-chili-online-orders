@@ -52,9 +52,26 @@
 <div id="orders"></div>
 
 <!-- Beep sound -->
-<audio id="beep" loop>
-    <source src="/beep.mp3" type="audio/mpeg">
-</audio>
+<script>
+    // 🔓 Unlock audio on first user interaction
+    let audioUnlocked = false;
+
+    function unlockAudio() {
+      if (audioUnlocked) return;
+
+      const beep = document.getElementById("beep");
+      beep.play().then(() => {
+        beep.pause();
+        beep.currentTime = 0;
+        audioUnlocked = true;
+        console.log("🔊 Audio unlocked");
+      }).catch(() => {});
+    }
+
+    document.addEventListener("click", unlockAudio, { once: true });
+    document.addEventListener("touchstart", unlockAudio, { once: true });
+</script>
+
 
 <!-- WebSocket libraries -->
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
