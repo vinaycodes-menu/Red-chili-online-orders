@@ -1,8 +1,12 @@
-/* RESET (simple) */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -12,7 +16,6 @@ body {
 }
 
 /* ===== TOP BAR ===== */
-
 .top-bar {
   display: flex;
   justify-content: space-between;
@@ -30,7 +33,6 @@ body {
 .restaurant-meta span {
   font-size: 13px;
   color: #666;
-  margin-right: 8px;
 }
 
 .search-box input {
@@ -42,15 +44,13 @@ body {
 }
 
 /* ===== MAIN LAYOUT ===== */
-
 .main-layout {
-  display: flex;          /* sidebar + content side by side */
-  padding: 16px 32px;
+  display: flex;
   gap: 24px;
+  padding: 16px 32px;
 }
 
 /* ===== SIDEBAR ===== */
-
 .sidebar {
   width: 220px;
 }
@@ -69,7 +69,6 @@ body {
 .menu-list {
   position: sticky;
   top: 80px;
-  height: fit-content;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -82,16 +81,21 @@ body {
   padding: 6px 0;
 }
 
-
-
-/* ===== CONTENT AREA ===== */
-
-.content {
-   max-width: 1200px;
-    margin: auto;               /* take remaining space */
+.menu-item.active {
+  font-weight: bold;
+  color: #d60000;
+  border-left: 3px solid #d60000;
+  padding-left: 8px;
 }
 
-/* a row that holds 2 cards */
+/* ===== CONTENT ===== */
+.content {
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+}
+
+/* ===== CARD GRID ===== */
 .card-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -100,20 +104,17 @@ body {
 }
 
 /* ===== DISH CARD ===== */
-
 .dish-card {
-  background-color: #ffffff;
+  background: #ffffff;
   border-radius: 12px;
   padding: 12px 12px 12px 16px;
   display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  gap: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
 }
 
 .dish-text {
   flex: 1;
-  padding-right: 12px;
 }
 
 .dish-title {
@@ -136,53 +137,21 @@ body {
   font-weight: 600;
 }
 
-.dish-meta .dot {
-  margin: 0 6px;
-}
-
-/* image + plus button container */
+/* ===== IMAGE ===== */
 .dish-image-wrapper {
-  position: relative;
   width: 140px;
   height: 140px;
   border-radius: 12px;
   overflow: hidden;
 }
 
-/* the dish image */
 .dish-image-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover;        /* THIS makes image look shaped and not stretched */
-}
-html{
-    scroll-behavior: smooth;
+  object-fit: cover;
 }
 
-.menu-item.active {
-  font-weight: bold;
-  color: #d60000;
-  border-left: 3px solid #d60000;
-  padding-left: 8px;
-}
-
-
-/* circular + button */
-.add-btn {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: none;
-  font-size: 20px;
-  line-height: 0;
-  cursor: pointer;
-  background-color: #ffffff;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
-}
-/* ===== MOBILE VIEW FIX (screens below 768px) ===== */
+/* ===== QTY CONTROLS ===== */
 .qty-control {
   display: flex;
   align-items: center;
@@ -190,20 +159,13 @@ html{
 }
 
 .qty-control button {
-   width: 32px;
-    height: 32px;
-    font-size: 18px;
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
 }
-
-.qty {
-  min-width: 20px;
-  text-align: center;
-}
-.order-info {
-  font-size: 15px;
-  font-weight: 600;
-}
-
 
 .qty-control button {
   background-color: #ff5a26;
@@ -218,15 +180,50 @@ html{
 .qty-control button:hover {
   opacity: 0.85;
 }
+
+.qty {
+  min-width: 20px;
+  text-align: center;
+}
+
+/* ===== CART BAR ===== */
+.order-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ff5a26;
+  color: #fff;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+}
+
+.order-info {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.order-link {
+  background: #ffffff55;
+  color: #fff;
+  border: 1px solid #ffffff55;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
 
-  /* stack items vertical instead of side-by-side */
   .main-layout {
     flex-direction: column;
     padding: 12px 16px;
   }
 
-  /* sidebar becomes horizontal scroll */
   .sidebar {
     width: 100%;
   }
@@ -234,8 +231,6 @@ html{
   .menu-list {
     flex-direction: row;
     overflow-x: auto;
-    gap: 10px;
-    padding-bottom: 8px;
   }
 
   .menu-item {
@@ -246,103 +241,31 @@ html{
   }
 
   .menu-item.active {
-    border-color: #d60000;
     background: #d60000;
     color: #fff;
+    border-color: #d60000;
   }
 
-  /* search box full width */
-  .search-box input {
-    width: 100%;
-  }
-
-  /* card: one item per row */
   .card-row {
     grid-template-columns: 1fr;
-    gap: 12px;
   }
 
-  /* image smaller on mobile */
   .dish-image-wrapper {
     width: 110px;
     height: 110px;
   }
 
-  /* reduce description text a little for mobile readability */
   .dish-desc {
     font-size: 12px;
   }
 
   .top-bar {
     flex-direction: column;
+    gap: 8px;
     align-items: flex-start;
-    gap: 8px;
-    padding: 12px 16px;
   }
 
-  .order-bar{
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    background: #ff5a26;
-    color: #fff;
-    padding: 8px 12px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+  .search-box input {
+    width: 100%;
   }
-
-  .order-link {
-    flex: 1;
-    background-color: #ffffff55;
-    text-align: center;
-    text-decoration: none;
-    color: #fff;
-    font-weight: 600;
-    padding: 8px 10px;
-    cursor:pointer;
-    border-radius: 999px;
-    border: 1px solid #ffffff55;
-    white-space: nowrap;
-  }
-  .order-link:hover {
-    background: #ffffff33;
-  }
-
-
-
-  .order-info{
-    font-weight: 500;
-    white-space: nowrap;
-  }
-
-  .dish-meta .spcl-item {
-  font-size: 12px;
-  color: #666;
-  background: #f0f0f0;
-  padding: 3px 8px;
-  border-radius: 6px;
-  white-space: nowrap;
-}
-
-.dish-meta .price {
-  font-weight: 600;
-  font-size: 16px;
-  color: #d32f2f; /* red tone */
-}
-
-.dish-image-wrapper img {
-  transition: transform 0.2s ease;
-}
-
-.dish-card:hover .dish-image-wrapper img {
-  transform: scale(1.03);
-}
-
-
 }
