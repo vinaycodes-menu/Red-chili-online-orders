@@ -102,13 +102,19 @@
     stompClient.debug = null;
 
     stompClient.connect({}, () => {
-        stompClient.subscribe("/topic/orders", message => {
-            const order = JSON.parse(message.body);
-            showOrder(order);
-        });
-    }, err => {
-        console.error("WebSocket error:", err);
+    console.log("✅ Kitchen connected to WebSocket");
+
+    stompClient.subscribe("/topic/orders", message => {
+        console.log("📥 Order received:", message.body);
+
+        const order = JSON.parse(message.body);
+        showOrder(order);
     });
+
+}, err => {
+    console.error("❌ WebSocket error:", err);
+});
+
 
     /* =========================
        4️⃣ RENDER ORDER
