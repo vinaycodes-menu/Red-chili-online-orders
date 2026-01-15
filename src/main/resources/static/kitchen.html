@@ -51,10 +51,10 @@
 
 <div id="orders"></div>
 
-<!-- Beep sound -->
-<!--<audio id="beep" preload="auto" loop>-->
-<!--    <source src="beep.mp3" type="audio/mpeg">-->
-<!--</audio>-->
+ Beep sound
+<audio id="beep" preload="auto" loop>
+    <source src="beep.mp3" type="audio/mpeg">
+</audio>
 
 <!-- WebSocket libs -->
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
@@ -69,21 +69,20 @@
        ========================= */
     let audioUnlocked = false;
 
-<!--    function unlockAudio() {-->
-<!--        if (audioUnlocked) return;-->
+function unlockAudio() {
+    if (audioUnlocked) return;
 
-<!--        beep.play()-->
-<!--            .then(() => {-->
-<!--                beep.pause();-->
-<!--                beep.currentTime = 0;-->
-<!--                audioUnlocked = true;-->
-<!--                console.log("🔊 Audio unlocked");-->
-<!--            })-->
-<!--            .catch(() => {});-->
-<!--    }-->
+    beep.play().then(() => {
+        beep.pause();
+        beep.currentTime = 0;
+        audioUnlocked = true;
+        console.log("🔊 Audio unlocked");
+    }).catch(() => {});
+}
 
-<!--    document.addEventListener("click", unlockAudio, { once: true });-->
-<!--    document.addEventListener("touchstart", unlockAudio, { once: true });-->
+document.addEventListener("click", unlockAudio, { once: true });
+document.addEventListener("touchstart", unlockAudio, { once: true });
+
 
     /* =========================
        2️⃣ LOAD EXISTING ORDERS
@@ -132,9 +131,10 @@
         `;
 
 <!--        // 🔔 Play sound-->
-<!--        if (audioUnlocked) {-->
-<!--            beep.play().catch(() => {});-->
-<!--        }-->
+         if (audioUnlocked) {
+    beep.play().catch(() => {});
+}
+
 
         // Accept order
         div.onclick = () => {
