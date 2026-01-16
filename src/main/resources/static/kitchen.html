@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Kitchen Orders</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
@@ -13,34 +12,18 @@
             color: #fff;
             padding: 20px;
         }
-
-        h1 {
-            color: #ff4444;
-            margin-bottom: 5px;
-        }
-
-        .hint {
-            font-size: 12px;
-            color: #aaa;
-            margin-bottom: 20px;
-        }
-
+        h1 { color: #ff4444; margin-bottom: 5px; }
+        .hint { font-size: 12px; color: #aaa; margin-bottom: 20px; }
         .order {
             background: #222;
             padding: 15px;
             margin-bottom: 12px;
             border-radius: 6px;
-            cursor: pointer;
             border-left: 4px solid #ff4444;
         }
-
-        .order:hover {
-            background: #333;
-        }
-
-        .order strong {
-            font-size: 16px;
-        }
+        .order:hover { background: #333; }
+        .order strong { font-size: 16px; }
+        button { margin-right: 8px; }
     </style>
 </head>
 
@@ -51,12 +34,11 @@
 
 <div id="orders"></div>
 
- Beep sound
-<audio id="beep" preload="auto" loop>
+<!-- Beep sound -->
+<audio id="beep" preload="auto">
     <source src="beep.mp3" type="audio/mpeg">
 </audio>
 
-<!-- WebSocket libs -->
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
 
@@ -64,120 +46,67 @@
     const ordersDiv = document.getElementById("orders");
     const beep = document.getElementById("beep");
 
-    /* =========================
-       1️⃣ UNLOCK AUDIO (REQUIRED)
-       ========================= */
     let audioUnlocked = false;
 
-function unlockAudio() {
-    if (audioUnlocked) return;
+    function unlockAudio() {
+        if (audioUnlocked) return;
+        beep.play().then(() => {
+            beep.pause();
+            beep.currentTime = 0;
+            audioUnlocked = true;
+            console.log("🔊 Audio unlocked");
+        }).catch(() => {});
+    }
 
-    beep.play().then(() => {
-        beep.pause();
-        beep.currentTime = 0;
-        audioUnlocked = true;
-        console.log("🔊 Audio unlocked");
-    }).catch(() => {});
-}
+    document.addEventListener("click", unlockAudio, { once: true });
+    document.addEventListener("touchstart", unlockAudio, { once: true });
 
-document.addEventListener("click", unlockAudio, { once: true });
-document.addEventListener("touchstart", unlockAudio, { once: true });
-
-
-    /* =========================
-       2️⃣ LOAD EXISTING ORDERS
-       ========================= */
     fetch("/api/orders/new")
         .then(res => res.json())
-        .then(orders => {
-            orders.forEach(showOrder);
-        });
+        .then(orders => orders.forEach(showOrder));
 
-    /* =========================
-       3️⃣ WEBSOCKET (LIVE ORDERS)
-       ========================= */
     const socket = new SockJS(window.location.origin + "/ws");
     const stompClient = Stomp.over(socket);
     stompClient.debug = null;
 
     stompClient.connect({}, () => {
-    console.log("✅ Kitchen connected to WebSocket");
-
-    stompClient.subscribe("/topic/orders", message => {
-        console.log("📥 Order received:", message.body);
-
-        const order = JSON.parse(message.body);
-        showOrder(order);
+        console.log("✅ Kitchen connected");
+        stompClient.subscribe("/topic/orders", msg => {
+            showOrder(JSON.parse(msg.body));
+        });
     });
 
-}, err => {
-    console.error("❌ WebSocket error:", err);
-});
+    function showOrder(order) {
+        if (document.getElementById("order-" + order.id)) return;
 
+        const div = document.createElement("div");
+        div.className = "order";
+        div.id = "order-" + order.id;
 
-    /* =========================
-       4️⃣ RENDER ORDER
-       ========================= */
-    <script>
-function showOrder(order) {
-    if (document.getElementById("order-" + order.id)) return;
+        div.innerHTML = `
+            <strong>Order #${order.id}</strong><br>
+            ${order.items}
+            <div style="margin-top:8px;color:#aaa;">⏱️ Prep time: ~15 mins</div>
+            <div style="margin-top:10px;">
+                <button class="accept-btn">✅ Accept</button>
+                <button class="print-btn">🖨️ Print</button>
+            </div>
+        `;
 
-    const div = document.createElement("div");
-    div.className = "order";
-    div.id = "order-" + order.id;
+        if (audioUnlocked) beep.play().catch(() => {});
 
-    div.innerHTML = `
-        <strong>Order #${order.id}</strong><br>
-        ${order.items}<br><br>
-
-        ⏱ <b>Prep Time:</b> ~15 mins<br><br>
-
-        <button class="accept-btn">✅ Accept</button>
-        <button class="print-btn">🖨️ Print</button>
-    `;
-
-    /* 🔔 Play beep when order arrives */
-    if (audioUnlocked) {
-        beep.play().catch(() => {});
-    }
-
-    /* ✅ ACCEPT BUTTON */
-    div.querySelector(".accept-btn").onclick = () => {
-        fetch("/api/orders/" + order.id + "/accept", {
-            method: "PUT"
-        });
-
-        beep.pause();
-        beep.currentTime = 0;
-        div.remove();
-    };
-
-    /* 🖨️ PRINT BUTTON */
-    div.querySelector(".print-btn").onclick = () => {
-        window.print();
-    };
-
-    ordersDiv.prepend(div);
-}
-</script>
-
-
-<!--        // 🔔 Play sound-->
-         if (audioUnlocked) {
-    beep.play().catch(() => {});
-}
-
-
-        // Accept order
-        div.onclick = () => {
+        div.querySelector(".accept-btn").onclick = () => {
             fetch("/api/orders/" + order.id + "/accept", { method: "PUT" });
             beep.pause();
             beep.currentTime = 0;
             div.remove();
         };
 
+        div.querySelector(".print-btn").onclick = () => window.print();
+
         ordersDiv.prepend(div);
     }
 </script>
+
 </body>
 </html>
