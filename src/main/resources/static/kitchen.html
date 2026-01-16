@@ -30,7 +30,22 @@
 <body>
 
 <h1>🔔 New Orders</h1>
+
+<button id="startKitchen" style="
+    margin: 12px 0;
+    padding: 10px 16px;
+    background: #ff4444;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+">
+    🔔 Start Kitchen Alerts
+</button>
+
 <p class="hint">Tap an order to accept and stop the sound</p>
+
 
 <div id="orders"></div>
 
@@ -57,9 +72,13 @@
             console.log("🔊 Audio unlocked");
         }).catch(() => {});
     }
+    document.getElementById("startKitchen").onclick = () => {
+    unlockAudio();
+    document.getElementById("startKitchen").innerText = "✅ Alerts Enabled";
+    document.getElementById("startKitchen").disabled = true;
+};
 
-    document.addEventListener("click", unlockAudio, { once: true });
-    document.addEventListener("touchstart", unlockAudio, { once: true });
+
 
     fetch("/api/orders/new")
         .then(res => res.json())
