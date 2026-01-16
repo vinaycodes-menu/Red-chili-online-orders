@@ -269,3 +269,26 @@ body {
     width: 100%;
   }
 }
+.accept-btn, .print-btn {
+    padding: 6px 12px;
+    margin-right: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.accept-btn {
+    background: #28a745;
+    color: white;
+}
+
+.print-btn {
+    background: #007bff;
+    color: white;
+}
+
+.accept-btn:hover,
+.print-btn:hover {
+    opacity: 0.85;
+}

@@ -118,17 +118,49 @@ document.addEventListener("touchstart", unlockAudio, { once: true });
     /* =========================
        4️⃣ RENDER ORDER
        ========================= */
-    function showOrder(order) {
-        if (document.getElementById("order-" + order.id)) return;
+    <script>
+function showOrder(order) {
+    if (document.getElementById("order-" + order.id)) return;
 
-        const div = document.createElement("div");
-        div.className = "order";
-        div.id = "order-" + order.id;
+    const div = document.createElement("div");
+    div.className = "order";
+    div.id = "order-" + order.id;
 
-        div.innerHTML = `
-            <strong>Order #${order.id}</strong><br>
-            ${order.items}
-        `;
+    div.innerHTML = `
+        <strong>Order #${order.id}</strong><br>
+        ${order.items}<br><br>
+
+        ⏱ <b>Prep Time:</b> ~15 mins<br><br>
+
+        <button class="accept-btn">✅ Accept</button>
+        <button class="print-btn">🖨️ Print</button>
+    `;
+
+    /* 🔔 Play beep when order arrives */
+    if (audioUnlocked) {
+        beep.play().catch(() => {});
+    }
+
+    /* ✅ ACCEPT BUTTON */
+    div.querySelector(".accept-btn").onclick = () => {
+        fetch("/api/orders/" + order.id + "/accept", {
+            method: "PUT"
+        });
+
+        beep.pause();
+        beep.currentTime = 0;
+        div.remove();
+    };
+
+    /* 🖨️ PRINT BUTTON */
+    div.querySelector(".print-btn").onclick = () => {
+        window.print();
+    };
+
+    ordersDiv.prepend(div);
+}
+</script>
+
 
 <!--        // 🔔 Play sound-->
          if (audioUnlocked) {
