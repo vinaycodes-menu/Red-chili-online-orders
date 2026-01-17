@@ -8,23 +8,113 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #111;
+            background: #0e0e0e;
             color: #fff;
             padding: 20px;
         }
-        h1 { color: #ff4444; margin-bottom: 5px; }
-        .hint { font-size: 12px; color: #aaa; margin-bottom: 20px; }
-        .order {
-            background: #222;
-            padding: 15px;
-            margin-bottom: 12px;
-            border-radius: 6px;
-            border-left: 4px solid #ff4444;
+
+        /* Page title */
+        h1 {
+            color: #ff4444;
+            font-size: 34px;
+            margin-bottom: 10px;
         }
-        .order:hover { background: #333; }
-        .order strong { font-size: 16px; }
-        button { margin-right: 8px; }
+
+        /* Hint text */
+        .hint {
+            font-size: 18px;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        /* Order container */
+        .order {
+            background: #1f1f1f;
+            padding: 22px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border-left: 8px solid #ff4444;
+            font-size: 20px;
+        }
+
+        /* Order hover */
+        .order:hover {
+            background: #2a2a2a;
+        }
+
+        /* Order number */
+        .order strong {
+            font-size: 26px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        /* Customer info */
+        .order .customer {
+            font-size: 22px;
+            margin-bottom: 6px;
+        }
+
+        /* Pickup time */
+        .order .pickup {
+            font-size: 20px;
+            color: #ffd54f;
+            margin-bottom: 10px;
+        }
+
+        /* Order items */
+        .order .items {
+            font-size: 24px;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            white-space: pre-line;
+        }
+
+        /* Prep time */
+        .order .prep {
+            font-size: 18px;
+            color: #aaa;
+            margin-bottom: 12px;
+        }
+
+        /* Buttons container */
+        .order-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        /* Buttons */
+        button {
+            font-size: 20px;
+            padding: 14px 18px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Accept button */
+        .accept-btn {
+            background: #4caf50;
+            color: #fff;
+            flex: 1;
+        }
+
+        /* Print button */
+        .print-btn {
+            background: #2196f3;
+            color: #fff;
+            flex: 1;
+        }
+
+        /* Start kitchen button */
+        #startKitchen {
+            font-size: 20px;
+            padding: 14px 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
     </style>
+
 </head>
 
 <body>
@@ -102,15 +192,25 @@
         div.className = "order";
         div.id = "order-" + order.id;
 
-        div.innerHTML = `
-            <strong>Order #${order.id}</strong><br>
-            ${order.items}
-            <div style="margin-top:8px;color:#aaa;">⏱️ Prep time: ~15 mins</div>
-            <div style="margin-top:10px;">
-                <button class="accept-btn">✅ Accept</button>
-                <button class="print-btn">🖨️ Print</button>
-            </div>
-        `;
+      div.innerHTML = `
+  <strong>Order #${order.id}</strong>
+
+  <div class="customer">👤 ${order.customerName}</div>
+  <div class="pickup">⏰ Pickup: ${order.pickupTime}</div>
+
+  <div class="items">
+    ${order.items}
+  </div>
+
+  <div class="prep">⏱️ Prep time: ~15 mins</div>
+
+  <div class="order-actions">
+    <button class="accept-btn">✅ Accept</button>
+    <button class="print-btn">🖨️ Print</button>
+  </div>
+`;
+
+
 
         if (audioUnlocked) beep.play().catch(() => {});
 

@@ -12,6 +12,9 @@ public class OrderEntity {
 
     private String items;
     private String status;
+    private String customerName;
+    private String pickupTime;
+
 
     private LocalDateTime createdAt;
 
@@ -39,5 +42,19 @@ public class OrderEntity {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getCustomerName(){
+        return customerName;
+    }
+    public void setCustomerName(String customerName){
+        this.customerName = customerName;
+    }
+
+    public String getPickupTime(){
+        return pickupTime;
+    }
+    public void setPickupTime(String pickupTime){
+        this.pickupTime = pickupTime;
     }
 }

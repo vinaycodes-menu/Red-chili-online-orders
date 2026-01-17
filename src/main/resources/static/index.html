@@ -578,6 +578,23 @@
           updateCartUI();
         });
       });
+      <div style="margin-bottom: 10px;">
+  <input
+    type="text"
+    id="customerName"
+    placeholder="Your Name"
+    style="width:100%; padding:8px; font-size:14px;"
+  />
+</div>
+
+<div style="margin-bottom: 10px;">
+  <input
+    type="time"
+    id="pickupTime"
+    style="width:100%; padding:8px; font-size:14px;"
+  />
+</div>
+
 
       placeOrderBtn.addEventListener("click", () => {
         if (Object.keys(cart).length === 0) {
@@ -592,7 +609,20 @@
         fetch("/api/orders", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ items })
+          const customerName = document.getElementById("customerName").value.trim();
+const pickupTime = document.getElementById("pickupTime").value;
+
+if (!customerName || !pickupTime) {
+  alert("Please enter your name and pickup time.");
+  return;
+}
+
+body: JSON.stringify({
+  items,
+  name: customerName,
+  pickupTime: pickupTime
+})
+
         })
         .then(res => {
           if (!res.ok) throw new Error();

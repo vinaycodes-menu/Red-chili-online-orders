@@ -24,6 +24,8 @@ public class OrderController {
 
         OrderEntity order = new OrderEntity();
         order.setItems(payload.get("items"));
+        order.setCustomerName(payload.get("name"));
+        order.setPickupTime(payload.get("pickupTime"));
         order.setStatus("NEW");
 
         OrderEntity saved = orderRepository.save(order);
@@ -31,6 +33,7 @@ public class OrderController {
 
         return saved;
     }
+
 
 
 
