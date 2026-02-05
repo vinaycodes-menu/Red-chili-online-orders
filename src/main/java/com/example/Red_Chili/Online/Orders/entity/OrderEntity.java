@@ -14,6 +14,9 @@ public class OrderEntity {
     private String status;
     private String customerName;
     private String pickupTime;
+    @Column(length = 500)
+    private String note;
+
 
 
     private LocalDateTime createdAt;
@@ -35,6 +38,10 @@ public class OrderEntity {
     public void setItems(String items) {
         this.items = items;
     }
+    public String getNote() { return note; }
+    public void setNote(String note) { this.note = note; }
+
+
 
     public String getStatus() {
         return status;

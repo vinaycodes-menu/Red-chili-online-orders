@@ -193,22 +193,47 @@
         div.id = "order-" + order.id;
 
       div.innerHTML = `
-  <strong>Order #${order.id}</strong>
+  <strong style="font-size:22px;">Order #${order.id}</strong>
 
-  <div class="customer">👤 ${order.customerName}</div>
-  <div class="pickup">⏰ Pickup: ${order.pickupTime}</div>
-
-  <div class="items">
-    ${order.items}
+  <div style="font-size:18px;margin-top:6px;">
+    👤 ${order.customerName || "Walk-in"}
   </div>
 
+  <div style="font-size:18px;margin-top:4px;">
+    ⏰ Pickup: ${order.pickupTime || "-"}
+  </div>
+
+  <div style="font-size:20px;margin-top:10px;">
+    🍽️ ${order.items}
+  </div>
+
+  ${order.note ? `
+    <div style="
+        margin-top:12px;
+        padding:10px;
+        background:#330000;
+        color:#ff3b3b;
+        font-size:20px;
+        font-weight:bold;
+        border-left:6px solid red;
+        border-radius:6px;">
+        🚨 NOTE: ${order.note}
+    </div>
+  ` : ""}
 
 
-  <div class="order-actions">
-    <button class="accept-btn">✅ Accept</button>
-    <button class="print-btn">🖨️ Print</button>
+  <div style="margin-top:12px;color:#aaa;">⏱️ Prep: ~15 mins</div>
+
+  <div style="margin-top:10px;">
+      <button class="accept-btn">✅ Accept</button>
+      <button class="print-btn">🖨️ Print</button>
   </div>
 `;
+
+
+
+
+
 
 
 
