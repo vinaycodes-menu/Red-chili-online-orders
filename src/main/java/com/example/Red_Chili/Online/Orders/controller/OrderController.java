@@ -26,6 +26,9 @@ public class OrderController {
         order.setItems(payload.get("items"));
         order.setCustomerName(payload.get("name"));
         order.setPickupTime(payload.get("pickupTime"));
+        order.setNote(payload.get("note"));
+
+
         order.setStatus("NEW");
 
         OrderEntity saved = orderRepository.save(order);
