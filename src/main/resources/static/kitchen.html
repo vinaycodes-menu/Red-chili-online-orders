@@ -283,45 +283,33 @@
             beep.currentTime = 0;
             div.remove();
         };
+    div.querySelector(".print-btn").onclick = () => {
 
-       div.querySelector(".print-btn").onclick = () => {
+    const allOrders = document.querySelectorAll(".order");
 
-    const printContent = div.innerHTML;
+    // hide all other orders
+    allOrders.forEach(o => o.style.display = "none");
 
-    const win = window.open('', '', 'width=400,height=600');
+    // show only this order
+    div.style.display = "block";
 
-    win.document.write(`
-        <html>
-        <head>
-            <title>Kitchen Order</title>
-            <style>
-                body {
-                    font-family: Arial;
-                    padding: 20px;
-                    font-size: 22px;
-                    font-weight: bold;
-                    color: black;
-                }
+    // print
+    window.print();
 
-                strong {
-                    font-size: 28px;
-                }
-            </style>
-        </head>
-        <body>
-            ${printContent.replace(/<button[^>]*>.*?<\/button>/g, '')}
-        </body>
-        </html>
-    `);
-
-    win.document.close();
-    win.print();
-    setTimeout(() => { win.close(); }, 500);
+    // restore screen after print
+    setTimeout(() => {
+        allOrders.forEach(o => o.style.display = "block");
+    }, 800);
 };
+    ordersDiv.prepend(div);
+}
 
 
-        ordersDiv.prepend(div);
-    }
+
+
+
+
+
 </script>
 
 </body>

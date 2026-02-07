@@ -292,3 +292,30 @@ body {
 .print-btn:hover {
     opacity: 0.85;
 }
+@media print {
+
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 22px !important;
+    font-weight: bold !important;
+  }
+
+  h1, .hint, #startKitchen {
+    display:none !important;
+  }
+
+  .order {
+    display:none;
+    background:white !important;
+    color:black !important;
+    border:2px solid black !important;
+    font-size:26px !important;
+    font-weight:bold !important;
+    padding:20px !important;
+  }
+
+  button {
+    display:none !important;
+  }
+}
