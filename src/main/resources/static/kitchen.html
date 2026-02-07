@@ -113,6 +113,44 @@
             margin-bottom: 20px;
             border-radius: 8px;
         }
+
+        /* ================= PRINT FIX ================= */
+@media print {
+
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 22px !important;
+    font-weight: bold !important;
+  }
+
+  h1 {
+    color: black !important;
+    font-size: 32px !important;
+    font-weight: bold !important;
+  }
+
+  .order {
+    background: white !important;
+    color: black !important;
+    border: 3px solid black !important;
+    font-size: 24px !important;
+    font-weight: bold !important;
+    padding: 20px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .order strong {
+    font-size: 30px !important;
+    font-weight: bold !important;
+  }
+
+  button {
+    display: none !important; /* hide buttons in print */
+  }
+
+}
+
     </style>
 
 </head>
@@ -246,7 +284,41 @@
             div.remove();
         };
 
-        div.querySelector(".print-btn").onclick = () => window.print();
+       div.querySelector(".print-btn").onclick = () => {
+
+    const printContent = div.innerHTML;
+
+    const win = window.open('', '', 'width=400,height=600');
+
+    win.document.write(`
+        <html>
+        <head>
+            <title>Kitchen Order</title>
+            <style>
+                body {
+                    font-family: Arial;
+                    padding: 20px;
+                    font-size: 22px;
+                    font-weight: bold;
+                    color: black;
+                }
+
+                strong {
+                    font-size: 28px;
+                }
+            </style>
+        </head>
+        <body>
+            ${printContent.replace(/<button[^>]*>.*?<\/button>/g, '')}
+        </body>
+        </html>
+    `);
+
+    win.document.close();
+    win.print();
+    setTimeout(() => { win.close(); }, 500);
+};
+
 
         ordersDiv.prepend(div);
     }
